@@ -19,14 +19,14 @@ body{
 
 
 .global-color{
-    color: #72BCB5;
+    color: #7b89bc;
 }
 
 /*导航-------------------------------------------------------------------------------------------------------*/
 #nav{
     display: flex;
     justify-content: space-between;
-    background-color: #72BCB5;
+    background-color: #7b89bc;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -63,7 +63,7 @@ body{
     text-align: right;
 }
 .home-block-item-udpate>a{
-    background-color: #72BCB5;
+    background-color: #7b89bc;
     padding: 5px 20px;
     border-radius: 10px;
     margin-top: 5px;
@@ -119,7 +119,7 @@ body{
     font-size: 0px;
 }
 .album-item{
-    border: 1px solid #72BCB5;
+    border: 1px solid #7b89bc;
     display: inline-block;
     width: 400px;
     height: 450px;
