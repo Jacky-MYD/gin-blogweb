@@ -29,17 +29,3 @@ func QueryRowDB(sql string) *sql.Row{
 func QueryDB(sql string) (*sql.Rows, error) {
 	return SqlDB.Query(sql)
 }
-
-
-//--------图片--------
-//func CreateTableWithAlbum() {
-//	sql := `create table if not exists album(
-//        id int(4) primary key auto_increment not null,
-//        filepath varchar(255),
-//        filename varchar(64),
-//        status int(4),
-//        createtime int(10)
-//        );`
-//	utils.ModifyDB(sql)
-//}
-

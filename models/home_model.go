@@ -3,8 +3,8 @@ package models
 import (
 	"bytes"
 	"fmt"
-	"gin/blogWeb_gin/utils"
-	"gin/blogWeb_gin/config"
+	"blogWeb_gin/utils"
+	"blogWeb_gin/config"
 	"html/template"
 	"strconv"
 	"strings"
@@ -63,7 +63,7 @@ func MakeHomeBlocks(articles []Article, isLogin bool) template.HTML {
 
 		// 处理变量
 		//ParseFile解析该文件，用于插入变量
-		t, _ := template.ParseFiles("blogWeb_gin/views/home_block.html")
+		t, _ := template.ParseFiles("views/home_block.html")
 		buffer := bytes.Buffer{}
 		//就是将html文件里面的比那两替换为穿进去的数据
 		t.Execute(&buffer, homeParam)

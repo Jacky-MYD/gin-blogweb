@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"fmt"
-	"gin/blogWeb_gin/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"blogWeb_gin/models"
 )
 
 func TagsGet(c *gin.Context) {

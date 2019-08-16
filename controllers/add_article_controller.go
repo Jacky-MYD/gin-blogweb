@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"fmt"
-	"gin/blogWeb_gin/models"
+	"blogWeb_gin/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"

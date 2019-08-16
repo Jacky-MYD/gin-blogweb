@@ -2,8 +2,9 @@ package controllers
 
 import (
 	"fmt"
+	"blogWeb_gin/models"
 	"github.com/gin-gonic/gin"
-	"gin/blogWeb_gin/models"
+	"blogWeb_gin/utils"
 	"net/http"
 	"strconv"
 )
@@ -18,8 +19,11 @@ func ShowArticleGet(c *gin.Context) {
 	id, _ := strconv.Atoi(idStr)
 	fmt.Println("id:", id)
 
+	name := c.MustGet("UserName").(string)
+	fmt.Println("name======", name)
+
 	//获取id所对应的文章信息
 	art := models.QueryArticleWithId(id)
 	//渲染HTML
-	c.HTML(http.StatusOK, "show_article.html", gin.H{"IsLogin": islogin,"Title":art.Title,"Content":art.Content})
+	c.HTML(http.StatusOK, "show_article.html", gin.H{"IsLogin": islogin,"Title":art.Title,"Content":utils.SwitchMarkdownToHtml(art.Content)})
 }

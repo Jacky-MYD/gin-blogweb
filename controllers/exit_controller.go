@@ -9,7 +9,6 @@ import (
 
 func ExitGet(c *gin.Context)  {
 
-	fmt.Println("111111111========")
 	//清除该用户登录状态的数据
 	session := sessions.Default(c)
 	session.Delete("loginuser")

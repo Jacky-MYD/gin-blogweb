@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"fmt"
-	"gin/blogWeb_gin/models"
-	"gin/blogWeb_gin/utils"
+	"blogWeb_gin/models"
+	"blogWeb_gin/utils"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"net/http"

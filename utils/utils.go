@@ -1,9 +1,15 @@
 package utils
 
 import (
+	"bytes"
 	"crypto/md5"
 	"fmt"
-	db "gin/blogWeb_gin/database"
+	db "blogWeb_gin/database"
+	"github.com/PuerkitoBio/goquery"
+	"github.com/gin-gonic/gin"
+	"github.com/sourcegraph/syntaxhighlight"
+	"gopkg.in/russross/blackfriday.v2"
+	"html/template"
 	"log"
 	"time"
 )
@@ -37,24 +43,37 @@ func SwitchTimeStampToData(timeStamp int64) string {
 }
 
 
-//func SwitchMarkdownToHtml(content string) template.HTML {
-//	markdown := blackfriday.MarkdownCommon([]byte(content))
-//
-//	//获取到html文档
-//	doc, _ := goquery.NewDocumentFromReader(bytes.NewReader(markdown))
-//	/**
-//	对document进程查询，选择器和css的语法一样
-//	第一个参数：i是查询到的第几个元素
-//	第二个参数：selection就是查询到的元素
-//	 */
-//	doc.Find("code").Each(func(i int, selection *goquery.Selection) {
-//		light, _ := syntaxhighlight.AsHTML([]byte(selection.Text()))
-//		selection.SetHtml(string(light))
-//		fmt.Println(selection.Html())
-//		fmt.Println("light:", string(light))
-//		fmt.Println("\n\n\n")
-//	})
-//	htmlString, _ := doc.Html()
-//	return template.HTML(htmlString)
-//}
+func SwitchMarkdownToHtml(content string) template.HTML {
+	markdown := blackfriday.Run([]byte(content))
 
+	//获取到html文档
+	doc, _ := goquery.NewDocumentFromReader(bytes.NewReader(markdown))
+	/**
+	对document进程查询，选择器和css的语法一样
+	第一个参数：i是查询到的第几个元素
+	第二个参数：selection就是查询到的元素
+	 */
+	doc.Find("code").Each(func(i int, selection *goquery.Selection) {
+		light, _ := syntaxhighlight.AsHTML([]byte(selection.Text()))
+		selection.SetHtml(string(light))
+		fmt.Println(selection.Html())
+		fmt.Println("light:", string(light))
+		fmt.Println("\n\n\n")
+	})
+	htmlString, _ := doc.Html()
+	return template.HTML(htmlString)
+}
+
+// StatCost 是一个统计耗时请求耗时的中间件
+func StatCost() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+		c.Set("UserName", "Jacky")
+
+		// 执行其他中间件
+		c.Next()
+		// 计算耗时
+		cost := time.Since(start)
+		log.Println("cost========",cost)
+	}
+}

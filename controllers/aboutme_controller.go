@@ -12,4 +12,3 @@ func  AboutMeGet(c *gin.Context) {
 
 	c.HTML(http.StatusOK, "aboultme.html", gin.H{"IsLogin": islogin,"wechat":"微信：rubyhan1314","qq":"QQ：79539705","tel":"Tel：13910439137"})
 }
-

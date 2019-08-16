@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"fmt"
+	"blogWeb_gin/models"
 	"github.com/gin-gonic/gin"
 	"log"
-	"gin/blogWeb_gin/models"
 	"net/http"
 	"strconv"
 )

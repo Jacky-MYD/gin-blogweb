@@ -1,10 +1,10 @@
 package models
 
 import (
+	"blogWeb_gin/utils"
 	"fmt"
-	"gin/blogWeb_gin/config"
-	db "gin/blogWeb_gin/database"
-	"gin/blogWeb_gin/utils"
+	"blogWeb_gin/config"
+	db "blogWeb_gin/database"
 	"log"
 	"strconv"
 )

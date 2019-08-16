@@ -1,9 +1,9 @@
 package models
 
 import (
+	db "blogWeb_gin/database"
+	"blogWeb_gin/utils"
 	"fmt"
-	db "gin/blogWeb_gin/database"
-	"gin/blogWeb_gin/utils"
 )
 type User struct {
 	Id        int    `json:"id" form:"id"`

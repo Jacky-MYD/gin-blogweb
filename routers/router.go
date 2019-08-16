@@ -1,7 +1,8 @@
 package routers
 
 import (
-	"gin/blogWeb_gin/controllers"
+	"blogWeb_gin/utils"
+	"blogWeb_gin/controllers"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -9,7 +10,8 @@ import (
 
 func InitRouter() * gin.Engine {
 	router := gin.Default()
-	router.LoadHTMLGlob("blogWeb_gin/views/*")
+
+	router.LoadHTMLGlob("views/*")
 
 	// 设置session midddleware
 	store := cookie.NewStore([]byte("loginuser"))
@@ -47,7 +49,7 @@ func InitRouter() * gin.Engine {
 	}
 
 	//显示文章内容
-	router.GET("/show/:id", controllers.ShowArticleGet)
+	router.GET("/show/:id", utils.StatCost(), controllers.ShowArticleGet)
 
 	//标签
 	router.GET("/tags",controllers.TagsGet)
