@@ -4,11 +4,19 @@ import (
 	"blogWeb_gin/utils"
 	db "blogWeb_gin/database"
 	router "blogWeb_gin/routers"
+	"fmt"
 )
 
 func main()  {
 
-	db.InitMysql()
+	err := db.InitMysql()
+	if err != nil {
+		 fmt.Println("initdb is failed,err:%v\n",err)
+		return
+	}else {
+		fmt.Printf("initdb is succ")
+	}
+
 	// 路由
 	router := router.InitRouter()
 

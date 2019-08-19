@@ -8,6 +8,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gin-gonic/gin"
 	"github.com/sourcegraph/syntaxhighlight"
+	"gopkg.in/gomail.v2"
 	"gopkg.in/russross/blackfriday.v2"
 	"html/template"
 	"log"
@@ -76,4 +77,22 @@ func StatCost() gin.HandlerFunc {
 		cost := time.Since(start)
 		log.Println("cost========",cost)
 	}
+}
+
+// 发送邮件
+func sendEmail()  {
+	m := gomail.NewMessage()
+	m.SetAddressHeader("From", "*****@qq.com", "Jacky") // 发件人
+	m.SetHeader("To", // 收件人
+		m.FormatAddress("*****@163.com", "乔峰"),
+		m.FormatAddress("*****@qq.com", "郭靖"),
+	)
+	m.SetHeader("Subject", "Gomail")                                                            // 主题
+	m.SetBody("text/html", "Hello <a href = \"https://github.com/Jacky-MYD/gin-blogweb\">git.com</a>") // 正文
+
+	d := gomail.NewDialer("smtp.qq.com", 465, "*****@qq.com", "*********") // 发送邮件服务器、端口、发件人账号、发件人授权码
+	if err := d.DialAndSend(m); err != nil {
+		panic(err)
+	}
+	fmt.Println("发送完成！")
 }

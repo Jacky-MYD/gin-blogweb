@@ -2,14 +2,15 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
 )
 
 var SqlDB * sql.DB
-func InitMysql()  {
-	var err error
-	SqlDB, err = sql.Open("mysql", "root:123456@(localhost:3306)/blogTest?parseTime=true")
+func InitMysql() (err error) {
+	fmt.Println("2324")
+	SqlDB, err = sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/blogTest?parseTime=true")
 	// 错误检查
 	if err != nil {
 		log.Fatal(err.Error())
@@ -18,6 +19,7 @@ func InitMysql()  {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
+	return
 
 }
 
