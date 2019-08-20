@@ -1,9 +1,9 @@
 package main
 
 import (
-	"blogWeb_gin/utils"
 	db "blogWeb_gin/database"
 	router "blogWeb_gin/routers"
+	"blogWeb_gin/utils"
 	"fmt"
 )
 

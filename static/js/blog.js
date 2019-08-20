@@ -15,6 +15,9 @@ $(document).ready(function () {
                 required: true,
                 rangelength: [5, 10],
                 equalTo: "#register-password"
+            },
+            captcha: {
+                required: true
             }
         },
         messages: {
@@ -30,6 +33,9 @@ $(document).ready(function () {
                 required: "请确认密码",
                 rangelength: "密码必须是5-10位",
                 equalTo: "两次输入的密码必须相等"
+            },
+            captcha: {
+                required: "请输入验证码",
             }
         },
         submitHandler: function (form) {
@@ -65,6 +71,9 @@ $(document).ready(function () {
             password: {
                 required: true,
                 rangelength: [5, 10]
+            },
+            captcha: {
+                required: true
             }
         },
         messages: {
@@ -75,6 +84,9 @@ $(document).ready(function () {
             password: {
                 required: "请输入密码",
                 rangelength: "密码必须是5-10位"
+            },
+            captcha: {
+                required: "请输入验证码",
             }
         },
         submitHandler: function (form) {
@@ -176,6 +188,21 @@ $(document).ready(function () {
                         window.location.href = "/album"
                     }, 1000)
                 }
+            },
+            error: function (data, status) {
+                alert("err:" + data.message + ":" + status)
+            }
+        })
+    })
+
+    // 重制验证码
+    $(".refresh").click(function () {
+        var self = $(this)
+        $.ajax({
+            url: "/getCaptcha",
+            type: "get",
+            success: function (data, status) {
+                self.attr("src", data.imageUrl)
             },
             error: function (data, status) {
                 alert("err:" + data.message + ":" + status)

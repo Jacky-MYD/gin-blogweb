@@ -23,6 +23,12 @@
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password" placeholder="Password" id="register-password">
                         <input type="password" name="repassword" placeholder="rePassword">
+                        <div class="captcha" style="margin:auto;display: flex;width: 250px;justify-content: space-around;align-content: center;">
+                            <div>
+                                <input type="text" name="value" placeholder="请输入验证码" style="margin:0 10px 0 0;width: 140px">
+                            </div>
+                            <img src={{.CaptchaImageUrl}} style="width:100px;height:40px;cursor:pointer;" alt="" class="refresh">
+                        </div>
                         <br>
                         <button type="submit" id="login-button">Register</button>
                     </form>

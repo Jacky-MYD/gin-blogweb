@@ -16,7 +16,6 @@ func InitRouter() * gin.Engine {
 	// 设置session midddleware
 	store := cookie.NewStore([]byte("loginuser"))
 	router.Use(sessions.Sessions("mysession", store))
-
 	{
 		// 注册：
 		router.GET("/register", controllers.RegisterGet)
@@ -40,28 +39,33 @@ func InitRouter() * gin.Engine {
 		v1.GET("/add", controllers.AddArticleGet)
 		v1.POST("/add", controllers.AddArticlePost)
 
-		//更新文章
+		// 更新文章
 		v1.GET("/update",controllers.UpdateArticleGet)
 		v1.POST("/update",controllers.UpdateArticlePost)
 
-		//删除文章
+		// 删除文章
 		v1.GET("/delete",controllers.DeleteArticleGet)
 	}
 
-	//显示文章内容
+	// 显示文章内容
 	router.GET("/show/:id", utils.StatCost(), controllers.ShowArticleGet)
 
-	//标签
+	// 标签
 	router.GET("/tags",controllers.TagsGet)
 
-	//相册
+	// 相册
 	router.GET("/album",controllers.AlbumGet)
 
-	//文件上传
+	// 文件上传
 	router.POST("/upload",controllers.UploadPost)
 
-	//关于我
+	// 关于我
 	router.GET("/aboutme",controllers.AboutMeGet)
+
+	// 获取验证码
+	router.GET("/getCaptcha", controllers.GetCaptcha)
+	router.GET("/verify/:captchaId/:value", controllers.VerifyCaptcha)
+	router.GET("/getCaptchaPng/:captchaId", controllers.GetCaptchaPng)
 
 	return router
 }
