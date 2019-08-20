@@ -11,6 +11,7 @@ var SqlDB * sql.DB
 func InitMysql() (err error) {
 	fmt.Println("2324")
 	SqlDB, err = sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/blogTest?parseTime=true")
+	SqlDB.SetMaxIdleConns(0)
 	// 错误检查
 	if err != nil {
 		log.Fatal(err.Error())

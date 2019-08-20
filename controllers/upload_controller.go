@@ -29,7 +29,7 @@ func UploadPost(c *gin.Context) {
 		fileType = "img"
 	}
 	//文件夹路径存储到项目的路径
-	fileDir := fmt.Sprintf("blogWeb_gin/static/upload/%s/%d/%d/%d", fileType, now.Year(), now.Month(), now.Day())
+	fileDir := fmt.Sprintf("static/upload/%s/%d/%d/%d", fileType, now.Year(), now.Month(), now.Day())
 	//文件夹路径存储到数据库的路径，以便于显示
 	fileDb := fmt.Sprintf("static/upload/%s/%d/%d/%d", fileType, now.Year(), now.Month(), now.Day())
 	//ModePerm是0777，这样拥有该文件夹路径的执行权限

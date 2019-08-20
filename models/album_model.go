@@ -1,8 +1,8 @@
 package models
 
 import (
-	"blogWeb_gin/utils"
 	db "blogWeb_gin/database"
+	"blogWeb_gin/utils"
 )
 
 type Album struct {
